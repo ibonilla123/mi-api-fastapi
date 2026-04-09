@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Shop - AWS Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <nav class="bg-blue-700 p-4 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold italic">Isaac Cloud Store</h1>
+            <span class="text-sm bg-blue-800 px-3 py-1 rounded-full text-blue-200">S3 + EC2 + RDS</span>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-md h-fit border-t-4 border-blue-500">
+            <h2 class="text-xl font-bold mb-4 text-gray-700">Añadir Nuevo Producto</h2>
+            <form id="productForm" class="space-y-4">
+                <input type="text" id="name" placeholder="Nombre del producto" class="w-full border p-2 rounded focus:outline-blue-500" required>
+                <textarea id="description" placeholder="Descripción corta" class="w-full border p-2 rounded focus:outline-blue-500"></textarea>
+                <input type="number" id="price" placeholder="Precio" step="0.01" class="w-full border p-2 rounded focus:outline-blue-500" required>
+                <input type="number" id="stock" placeholder="Stock inicial" class="w-full border p-2 rounded focus:outline-blue-500" required>
+                <input type="url" id="image_url" placeholder="URL de la imagen (ej: https://...)" class="w-full border p-2 rounded focus:outline-blue-500">
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 rounded hover:bg-green-700 transition">Guardar en AWS</button>
+            </form>
+        </div>
+
+        <div class="lg:col-span-2">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Catálogo en Tiempo Real</h2>
+                <button onclick="cargarProductos()" class="text-blue-600 hover:underline">🔄 Refrescar</button>
+            </div>
+            <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
