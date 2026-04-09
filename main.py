@@ -3,11 +3,20 @@ from sqlmodel import Session, select
 from database import engine, create_db_and_tables, get_session
 from models import Product
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="API Ecommerce Isaac",
     description="API para gestión de productos conectada a Amazon RDS (Postgres)",
     version="2.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Crear las tablas en RDS
